@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import loginImage from '../../assets/login-image.jpg';
+import loginImage from '../../assets/cadastro.jpg';
 import { shade } from 'polished'
 
 export const Container = styled.div`
