@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import loginImage from '../../assets/login-image.jpg';
+import logo from '../../assets/logo.svg';
 import { shade } from 'polished'
 
 export const Container = styled.div`
@@ -17,6 +18,12 @@ export const Content = styled.div`
     width: 100%;
     max-width: 700px;
 
+    img {
+        width: 160px;
+        margin-bottom: 8px;
+        margin-left: 0px;
+    }
+
     form {
         margin: 80px 0;
         width: 340px;
@@ -25,6 +32,7 @@ export const Content = styled.div`
 
     h1 {
         margin-bottom: 24px;
+        font-size: 38px;
     }
     a {
         color: #ff9000;
@@ -40,6 +48,9 @@ export const Content = styled.div`
         &:hover {
             color: ${shade(0.2, '#ff9000')}
         }
+    }
+    .password {
+        color: #FFF;
     }
 `;
 

@@ -22,6 +22,10 @@ export const Content = styled.div`
         width: 340px;
         text-align: center;
     }
+    img {
+        width: 160px;
+        margin-bottom: 8px;
+    }
 
     h1 {
         margin-bottom: 24px;

@@ -1,7 +1,9 @@
 import React, { InputHTMLAttributes, useEffect, useRef, useState, useCallback } from 'react';
-import { Container } from './styles';
+import { Container, Error } from './styles';
 import { IconBaseProps } from 'react-icons'; // IMPORTA as propriedades base do icones para passarmos como parametro.
+import { FiAlertCircle } from 'react-icons/fi'
 import { useField } from '@unform/core';
+import  Tooltip   from '../tooltip'
 
 
 // Cria uma interface e extende com as propriedades que o input ja tem no HTML normalmente.
@@ -15,7 +17,7 @@ const Input: React.FC<InputProps> = ({name, icon: Icon, ...rest}) => {
 // Lembrando q dentro da ref, é na propriedade current que se encontra o input.
 // path: é aonde o unform vai buscar dentro da referencia o valor do input.
 const inputRef = useRef<HTMLInputElement>(null); 
-const { fieldName, error, registerField} = useField(name);
+const { fieldName, defaultValue, error, registerField} = useField(name);
 const [isFocused, setIsFocused] = useState(false);
 const [isFilled, setIsFilled] = useState(false);
 
@@ -36,9 +38,12 @@ useEffect(() => {
         });
     }, [fieldName, registerField]);
 return (
-    <Container isFilled={isFilled} isFocused={isFocused}>
+    <Container isErrored={!!error} isFilled={isFilled} isFocused={isFocused}>
         {Icon && <Icon size={20}/>}
-        <input onFocus={()=> setIsFocused(true)} onBlur={() => handleInputBlur()} ref={inputRef} {...rest}/>
+        <input onFocus={()=> setIsFocused(true)} onBlur={() => handleInputBlur()} ref={inputRef} defaultValue={defaultValue} {...rest}/>
+        {error && <Error title={error}>
+                    <FiAlertCircle color='#fa1920' size={20}/>
+                  </Error>}
     </Container>
 );}
 
